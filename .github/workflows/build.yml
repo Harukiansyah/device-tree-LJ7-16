@@ -1,0 +1,39 @@
+name: Make Device Tree
+
+on:
+  workflow_dispatch:
+    inputs:
+      IMG_URL: https://drive.usercontent.google.com/download?id=1leJ30aQPyXhk_XH5pXU4kAeYWTl8p9Rg&export=download&confirm=t&uuid=2d1d3c37-f9b9-444b-95fc-0bf6e40d2ca2
+        description: 'Link Unduh boot.img / recovery.img'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install twrpdtgen
+      run: |
+        pip install twrpdtgen
+
+    - name: Download Image
+      run: |
+        wget "${{ github.event.inputs.IMG_URL }}" -O boot.img
+
+    - name: Dump Device Tree
+      run: |
+        python3 -m twrpdtgen boot.img --output ./output
+
+    - name: Upload Result
+      uses: actions/upload-artifact@v3
+      with:
+        name: device_tree_lj7
+        path: ./output/*
+        
