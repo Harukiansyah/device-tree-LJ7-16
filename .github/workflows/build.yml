@@ -25,11 +25,11 @@ jobs:
 
     - name: Download Image
       run: |
-        wget "${{ github.event.inputs.IMG_URL }}" -O boot.img
+        wget "${{ github.event.inputs.IMG_URL }}" -O vendor_boot.img
 
     - name: Dump Device Tree
       run: |
-        python3 -m twrpdtgen boot.img --output ./output
+        python3 -m twrpdtgen vendor_boot.img --output ./output
 
     - name: Upload Result
       uses: actions/upload-artifact@v4
