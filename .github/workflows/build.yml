@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       IMG_URL:
-        description: 'https://drive.usercontent.google.com/download?id=1leJ30aQPyXhk_XH5pXU4kAeYWTl8p9Rg&export=download&confirm=t&uuid=2d1d3c37-f9b9-444b-95fc-0bf6e40d2ca2'
+        description: 'https://drive.usercontent.google.com/download?id=1nw2ivtvQrX5e-kbgCypNN0oG2bmICE7W&export=download&confirm=t&uuid=2d433d6e-d92a-4891-90ff-22d1b75a7d08b9-444b-95fc-0bf6e40d2ca2'
         required: true
 
 jobs:
